@@ -1,10 +1,9 @@
 package com.xekr.ironstars.registry;
 
 import com.xekr.ironstars.IronStars;
+import com.xekr.ironstars.item.BreathingHelmet;
 import com.xekr.ironstars.item.WrenchItem;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -33,11 +32,13 @@ public class AllItems {
     public static final RegistryObject<Item> STEEL_PRESSURE_PLATE = ITEMS.register("steel_pressure_plate", () -> new BlockItem(AllBlocks.STEEL_PRESSURE_PLATE.get(), getProperties()));
     public static final RegistryObject<Item> NETHERITE_PRESSURE_PLATE = ITEMS.register("netherite_pressure_plate", () -> new BlockItem(AllBlocks.NETHERITE_PRESSURE_PLATE.get(), getProperties().fireResistant()));
     public static final RegistryObject<Item> TITANIUM_ALLOY_PRESSURE_PLATE = ITEMS.register("titanium_alloy_pressure_plate", () -> new BlockItem(AllBlocks.TITANIUM_ALLOY_PRESSURE_PLATE.get(), getProperties().fireResistant()));
+    public static final RegistryObject<Item> TUNGSTEN_PRESSURE_PLATE = ITEMS.register("tungsten_pressure_plate", () -> new BlockItem(AllBlocks.TUNGSTEN_PRESSURE_PLATE.get(), getProperties().fireResistant()));
     public static final RegistryObject<Item> MAGNET_BLOCK = ITEMS.register("magnet_block", () -> new BlockItem(AllBlocks.MAGNET_BLOCK.get(), getProperties()));
     public static final RegistryObject<Item> SILICON_BLOCK = ITEMS.register("silicon_block", () -> new BlockItem(AllBlocks.SILICON_BLOCK.get(), getProperties()));
     public static final RegistryObject<Item> STEEL_BLOCK = ITEMS.register("steel_block", () -> new BlockItem(AllBlocks.STEEL_BLOCK.get(), getProperties()));
     public static final RegistryObject<Item> TITANIUM_ALLOY_BLOCK = ITEMS.register("titanium_alloy_block", () -> new BlockItem(AllBlocks.TITANIUM_ALLOY_BLOCK.get(), getProperties()));
     public static final RegistryObject<Item> TITANIUM_BLOCK = ITEMS.register("titanium_block", () -> new BlockItem(AllBlocks.TITANIUM_BLOCK.get(), getProperties()));
+
     //deco
     public static final RegistryObject<Item> STEEL_TILES = ITEMS.register("steel_tiles", () -> new BlockItem(AllBlocks.STEEL_TILES.get(), getProperties(DECO)));
     public static final RegistryObject<Item> FISH_TANK = ITEMS.register("fish_tank", () -> new BlockItem(AllBlocks.FISH_TANK.get(), getProperties(DECO)));
@@ -50,6 +51,10 @@ public class AllItems {
 
     //base
     public static final RegistryObject<Item> WRENCH = ITEMS.register("wrench", () -> new WrenchItem(getProperties()));
+    public static final RegistryObject<Item> ACID_BUCKET = ITEMS.register("acid_bucket",() -> new BucketItem(AllFluids.ACID_FLUID, getProperties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> REDSTONE_BUCKET = ITEMS.register("redstone_bucket",() -> new BucketItem(AllFluids.REDSTONE_FLUID, getProperties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> ACID_BOTTLE = ITEMS.register("acid_bottle",() -> new Item(getProperties().craftRemainder(Items.GLASS_BOTTLE).stacksTo(16)));
     public static final RegistryObject<Item> CHIP = ITEMS.register("chip", () -> new Item(getProperties()));
     public static final RegistryObject<Item> CIRCUIT_BOARD = ITEMS.register("circuit_board", () -> new Item(getProperties()));
     public static final RegistryObject<Item> COPPER_WIRE = ITEMS.register("copper_wire", () -> new Item(getProperties()));
@@ -61,6 +66,11 @@ public class AllItems {
     public static final RegistryObject<Item> STICKY_RESIN = ITEMS.register("sticky_resin", () -> new Item(getProperties()));
     public static final RegistryObject<Item> TITANIUM_ALLOY_INGOT = ITEMS.register("titanium_alloy_ingot", () -> new Item(getProperties()));
     public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot", () -> new Item(getProperties()));
+    public static final RegistryObject<Item> PEARL_FRAGMENT = ITEMS.register("pearl_fragment", () -> new Item(getProperties()));
+    public static final RegistryObject<Item> PURE_CRYSTAL = ITEMS.register("pure_crystal", () -> new Item(getProperties()));
+    public static final RegistryObject<Item> SPACE_CRYSTAL = ITEMS.register("space_crystal", () -> new Item(getProperties()));
+    public static final RegistryObject<Item> REMOTE_CONTROL = ITEMS.register("remote_control", () -> new Item(getProperties()));
+    public static final RegistryObject<Item> BREATHING_HELMET = ITEMS.register("breathing_helmet", () -> new BreathingHelmet(getProperties()));
     //deco
     //ship
     //alien
