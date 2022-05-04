@@ -5,10 +5,13 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "mixins.refmap.json",
   "mixins": [
+    "AnvilBlockMixin",
     "ItemEntityMixin",
-    "LightingBoltMixin"
+    "LightingBoltMixin",
+    "MinecraftServerMixin"
   ],
   "client": [
+    "MinecraftMixin"
   ],
   "injectors": {
     "defaultRequire": 1

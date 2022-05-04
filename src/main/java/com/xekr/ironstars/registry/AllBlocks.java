@@ -2,55 +2,59 @@ package com.xekr.ironstars.registry;
 
 import com.xekr.ironstars.blocks.*;
 import com.xekr.ironstars.IronStars;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+
+import static net.minecraft.world.level.block.Blocks.TRIPWIRE_HOOK;
 
 
 public class AllBlocks {
-    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, IronStars.ID);
+
+    private static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, IronStars.ID);
 
     //base
-    public static final RegistryObject<Block> ACCELERATOR = BLOCKS.register("accelerator", () -> new AcceleratorBlock(defaultProperties().noOcclusion()));
-    public static final RegistryObject<Block> CENTRIFUGE = BLOCKS.register("centrifuge", () -> new CentrifugeBlock(defaultProperties().noOcclusion()));
-    public static final RegistryObject<Block> CHEMICAL_ACCUMULATOR = BLOCKS.register("chemical_accumulator", () -> new ChemicalAccumulatorBlock(defaultProperties().noOcclusion()));
-    public static final RegistryObject<Block> COIL = BLOCKS.register("coil", () -> new CoilBlock(defaultProperties().noOcclusion()));
-//    public static final RegistryObject<Block> ELECTRIC_WIRE = BLOCKS.register("electric_wire", () -> new ElectricWireBlock(getProperties())); // TODO:报错太多暂时删掉
-    public static final RegistryObject<Block> INTERACTOR = BLOCKS.register("interactor", () -> new InteractorBlock(defaultProperties().noOcclusion()));
-    public static final RegistryObject<Block> ITEM_RAIL = BLOCKS.register("item_rail", () -> new ItemRailBlock(defaultProperties().noOcclusion()));
-    public static final RegistryObject<Block> MOTOR = BLOCKS.register("motor", () -> new MotorBlock(defaultProperties().noOcclusion(), false));
-    public static final RegistryObject<Block> MOTOR_LAY = BLOCKS.register("motor_lay", () -> new MotorBlock(defaultProperties().noOcclusion(), true));
-    public static final RegistryObject<Block> TURBINE = BLOCKS.register("turbine", () -> new TurbineBlock(defaultProperties().noOcclusion()));
-    public static final RegistryObject<Block> WINDMILL = BLOCKS.register("windmill", () -> new WindmillBlock(defaultProperties().noOcclusion()));
-    public static final RegistryObject<Block> COPPER_PRESSURE_PLATE = BLOCKS.register("copper_pressure_plate", () -> new CopperPressurePlateBlock(defaultProperties().strength(0.5F).noCollission()));
-    public static final RegistryObject<Block> TITANIUM_PRESSURE_PLATE = BLOCKS.register("titanium_pressure_plate", () -> new TitaniumPressurePlateBlock(defaultProperties().strength(0.5F).noCollission()));
-    public static final RegistryObject<Block> STEEL_PRESSURE_PLATE = BLOCKS.register("steel_pressure_plate", () -> new SteelPressurePlateBlock(defaultProperties().strength(0.5F).noCollission()));
-    public static final RegistryObject<Block> NETHERITE_PRESSURE_PLATE = BLOCKS.register("netherite_pressure_plate", () -> new NetheritePressurePlateBlock(defaultProperties().noCollission()));
-    public static final RegistryObject<Block> TITANIUM_ALLOY_PRESSURE_PLATE = BLOCKS.register("titanium_alloy_pressure_plate", () -> new TitaniumAlloyPressurePlateBlock(defaultProperties().noCollission()));
-    public static final RegistryObject<Block> TUNGSTEN_PRESSURE_PLATE = BLOCKS.register("tungsten_pressure_plate", () -> new TungstenPressurePlateBlock(defaultProperties().strength(0.5F).noCollission()));
-    public static final RegistryObject<Block> MAGNET_BLOCK = BLOCKS.register("magnet_block", () -> new MagnetBlock(defaultProperties().explosionResistance(6.0F).noOcclusion()));
-    public static final RegistryObject<Block> SILICON_BLOCK = BLOCKS.register("silicon_block", () -> new SiliconBlock(defaultProperties()));
-    public static final RegistryObject<Block> STEEL_BLOCK = BLOCKS.register("steel_block", () -> new SteelBlock(defaultProperties()));
-    public static final RegistryObject<Block> TITANIUM_ALLOY_BLOCK = BLOCKS.register("titanium_alloy_block", () -> new TitaniumAlloyBlock(defaultProperties()));
-    public static final RegistryObject<Block> TITANIUM_BLOCK = BLOCKS.register("titanium_block", () -> new TitaniumBlock(defaultProperties()));
-    public static final RegistryObject<LiquidBlock> ACID = BLOCKS.register("acid", () -> new LiquidBlock(AllFluids.ACID_FLUID, liquidProperties()));
-    public static final RegistryObject<LiquidBlock> REDSTONE = BLOCKS.register("redstone", () -> new LiquidBlock(AllFluids.REDSTONE_FLUID, liquidProperties()));
+    public static final Block ACCELERATOR = register("accelerator", new Block(defaultProperties().noOcclusion()));
+    public static final Block CENTRIFUGE = register("centrifuge", new Block(defaultProperties().noOcclusion()));
+    public static final Block CHEMICAL_ACCUMULATOR = register("chemical_accumulator", new Block(defaultProperties().noOcclusion()));
+    public static final Block COIL = register("coil", new CoilBlock(defaultProperties().noOcclusion()));
+    public static final Block COPPER_TRIPWIRE = register("copper_tripwire", new CopperTripWireBlock((TripWireHookBlock)TRIPWIRE_HOOK, BlockBehaviour.Properties.of(Material.DECORATION).noCollission()));
+//    public static final Block ELECTRIC_WIRE = register("electric_wire", new ElectricWireBlock(getProperties())); // TODO:报错太多暂时删掉
+    public static final Block INTERACTOR = register("interactor", new Block(defaultProperties().noOcclusion()));
+    public static final Block ITEM_RAIL = register("item_rail", new Block(defaultProperties().noOcclusion()));
+    public static final Block MOTOR = register("motor", new MotorBlock(defaultProperties().noOcclusion(), false));
+    public static final Block MOTOR_LAY = register("motor_lay", new MotorBlock(defaultProperties().noOcclusion(), true));
+    public static final Block TURBINE = register("turbine", new Block(defaultProperties().noOcclusion()));
+    public static final Block WINDMILL = register("windmill", new Block(defaultProperties().noOcclusion()));
+    public static final Block COPPER_PRESSURE_PLATE = register("copper_pressure_plate", new CopperPressurePlateBlock(defaultProperties().strength(0.5F).noCollission()));
+    public static final Block TITANIUM_PRESSURE_PLATE = register("titanium_pressure_plate", new TitaniumPressurePlateBlock(defaultProperties().strength(0.5F).noCollission()));
+    public static final Block STEEL_PRESSURE_PLATE = register("steel_pressure_plate", new SteelPressurePlateBlock(defaultProperties().strength(0.5F).noCollission()));
+    public static final Block NETHERITE_PRESSURE_PLATE = register("netherite_pressure_plate", new NetheritePressurePlateBlock(defaultProperties().noCollission()));
+    public static final Block TITANIUM_ALLOY_PRESSURE_PLATE = register("titanium_alloy_pressure_plate", new TitaniumAlloyPressurePlateBlock(defaultProperties().noCollission()));
+    public static final Block TUNGSTEN_PRESSURE_PLATE = register("tungsten_pressure_plate", new TungstenPressurePlateBlock(defaultProperties().strength(0.5F).noCollission()));
+    public static final Block MAGNET_BLOCK = register("magnet_block", new MagnetBlock(defaultProperties().explosionResistance(6.0F).noOcclusion()));
+    public static final Block SILICON_BLOCK = register("silicon_block", new Block(defaultProperties()));
+    public static final Block STEEL_BLOCK = register("steel_block", new Block(defaultProperties()));
+    public static final Block TITANIUM_ALLOY_BLOCK = register("titanium_alloy_block", new Block(defaultProperties()));
+    public static final Block TITANIUM_BLOCK = register("titanium_block", new Block(defaultProperties()));
+
+    public static final LiquidBlock ACID = register("acid", new LiquidBlock(AllFluids.ACID_FLUID, liquidProperties()));
+    public static final LiquidBlock REDSTONE = register("redstone", new LiquidBlock(AllFluids.REDSTONE_FLUID, liquidProperties()));
+    public static final LiquidBlock FUSION_FUEL = register("fusion_fuel", new LiquidBlock(AllFluids.FUSION_FUEL_FLUID, liquidProperties()));
 
     //deco
-    public static final RegistryObject<Block> STEEL_TILES = BLOCKS.register("steel_tiles", () -> new SteelTilesBlock(defaultProperties(Material.STONE).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> FISH_TANK = BLOCKS.register("fish_tank", () -> new FishTankBlock(defaultProperties().noOcclusion()));
+    public static final Block STEEL_TILES = register("steel_tiles", new Block(defaultProperties(Material.STONE).sound(SoundType.STONE)));
+    public static final Block FISH_TANK = register("fish_tank", new FishTankBlock(defaultProperties().noOcclusion()));
     //ship
     //alien
-    public static final RegistryObject<Block> MOON_DUST = BLOCKS.register("moon_dust", () -> new MoonDustBlock(defaultProperties(Material.CLAY).sound(SoundType.SAND).noOcclusion()));
-    public static final RegistryObject<Block> MOON_ROCK = BLOCKS.register("moon_rock", () -> new MoonRockBlock(defaultProperties().sound(SoundType.STONE)));
-    public static final RegistryObject<Block> MOON_SOIL = BLOCKS.register("moon_soil", () -> new MoonSoilBlock(defaultProperties(Material.CLAY).sound(SoundType.ROOTS)));
-    public static final RegistryObject<Block> TITANIUM_ORE = BLOCKS.register("titanium_ore", () -> new TitaniumOreBlock(defaultProperties(Material.STONE).sound(SoundType.STONE)));
+    public static final Block MOON_DUST = register("moon_dust", new MoonDustBlock(defaultProperties(Material.CLAY).sound(SoundType.SAND).noOcclusion()));
+    public static final Block MOON_ROCK = register("moon_rock", new Block(defaultProperties().sound(SoundType.STONE)));
+    public static final Block MOON_SOIL = register("moon_soil", new Block(defaultProperties(Material.CLAY).sound(SoundType.ROOTS)));
+    public static final Block TITANIUM_ORE = register("titanium_ore", new Block(defaultProperties(Material.STONE).sound(SoundType.STONE)));
 
     private static Properties defaultProperties() {
         return defaultProperties(Material.METAL);
@@ -64,7 +68,12 @@ public class AllBlocks {
         return Properties.of(Material.WATER).noCollission().strength(100.0F).noDrops();
     }
 
+    private static <T extends Block> T register(String name, T block) {
+        REGISTRY.register(name, () -> block);
+        return block;
+    }
+    
     public static void register(IEventBus bus) {
-        BLOCKS.register(bus);
+        REGISTRY.register(bus);
     }
 }

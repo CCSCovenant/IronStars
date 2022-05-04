@@ -2,7 +2,7 @@ package com.xekr.ironstars.mixin;
 
 import com.xekr.ironstars.config.IronStarsConfig;
 import com.xekr.ironstars.registry.AllBlocks;
-import com.xekr.ironstars.registry.AllItemTags;
+import com.xekr.ironstars.registry.AllTags;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,12 +16,12 @@ public class ItemEntityMixin {
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/Vec3;add(DDD)Lnet/minecraft/world/phys/Vec3;"))
     private Vec3 slowDown(Vec3 instance, double pX, double pY, double pZ) {
         ItemEntity ths = (ItemEntity) (Object) this;
-        if (ths.level.getBlockState(ths.blockPosition()).is(AllBlocks.MAGNET_BLOCK.get())) pY /= IronStarsConfig.ItemInMagnetGravy;
+        if (ths.level.getBlockState(ths.blockPosition()).is(AllBlocks.MAGNET_BLOCK)) pY /= IronStarsConfig.ItemInMagnetGravy;
         return instance.add(pX, pY, pZ);
     }
 
     @Redirect(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
     private boolean explosion(ItemStack instance, Item pItem) {
-        return instance.is(pItem) || instance.getItem().getTags().contains(AllItemTags.TITANIUM);
+        return instance.is(pItem) || AllTags.Items.TITANIUM_ALLOY.contains(instance.getItem());
     }
 }
